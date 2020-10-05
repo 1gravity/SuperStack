@@ -7,7 +7,29 @@ class SuperStackTests {
 
     @Test
     fun basicStackTests() {
-        val stack = MySuperStack<Int>()
+        val stack1 = MySuperStack1<Int>()
+        val stack2 = MySuperStack2<Int>()
+        basicStackTestsInternal(stack1)
+        basicStackTestsInternal(stack2)
+    }
+
+    @Test
+    fun minTests() {
+        val stack1 = MySuperStack1<Int>()
+        val stack2 = MySuperStack2<Int>()
+        minTestsInternal(stack1)
+        minTestsInternal(stack2)
+    }
+
+    @Test
+    fun edgeCasesTests() {
+        val stack1 = MySuperStack1<Int>()
+        val stack2 = MySuperStack2<Int>()
+        edgeCasesTestsInternal(stack1)
+        edgeCasesTestsInternal(stack2)
+    }
+
+    private fun basicStackTestsInternal(stack: SuperStack<Int>) {
         stack.push(2)
         stack.push(3)
         stack.push(1)
@@ -20,9 +42,7 @@ class SuperStackTests {
         assertEquals(null, stack.top())
     }
 
-    @Test
-    fun minTests() {
-        val stack = MySuperStack<Int>()
+    private fun minTestsInternal(stack: SuperStack<Int>) {
         stack.push(2)
         assertEquals(2, stack.getMin())
         stack.push(3)
@@ -47,9 +67,7 @@ class SuperStackTests {
         assertEquals(2, stack.getMin())
     }
 
-    @Test
-    fun edgeCasesTests() {
-        val stack = MySuperStack<Int>()
+    private fun edgeCasesTestsInternal(stack: SuperStack<Int>) {
         assertEquals(null, stack.top())
         assertEquals(null, stack.pop())
         assertEquals(null, stack.getMin())
